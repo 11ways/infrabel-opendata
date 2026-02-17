@@ -3834,12 +3834,20 @@
                 if (!list) return;
 
                 // Find hidden items (inner div has ng-hide) and move them after the expansion control
+                // Use flexbox + order so the expansion control stays first in DOM (tab order)
+                // but visually appears after all the items
+                list.style.display = 'flex';
+                list.style.flexDirection = 'column';
+                expansionControl.style.order = '999';
+
                 const allItems = utils.selectAll('.odswidget-facet__category-container', list);
+                let insertAfter = expansionControl;
                 allItems.forEach(li => {
                     const innerDiv = li.querySelector('.odswidget-facet-category');
                     if (innerDiv && innerDiv.classList.contains('ng-hide')) {
-                        // Move this <li> to after the expansion control <li>
-                        expansionControl.after(li);
+                        // Move this <li> to after the last inserted item (preserves A->Z order)
+                        insertAfter.after(li);
+                        insertAfter = li;
                     }
                 });
 
