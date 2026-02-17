@@ -1,0 +1,12 @@
+{
+  "name": "infrabel-ifb2601-tools",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Local tooling for Infrabel site assets",
+  "scripts": {
+    "minify:accessibility": "terser js/accessibility-fixes.js -c -m -o js/accessibility-fixes.min.js --comments false"
+  },
+  "devDependencies": {
+    "terser": "^5.30.0"
+  }
+}
