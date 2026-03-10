@@ -2029,7 +2029,7 @@
                         if (attr.name === 'href' || attr.name === 'class' || attr.name.startsWith('ng-')) return;
                         button.setAttribute(attr.name, attr.value);
                     });
-                    while (aTab.firstChild) button.appendChild(aTab.firstChild.cloneNode(true));
+                    while (aTab.firstChild) button.appendChild(aTab.firstChild);
 
                     // Hide original <a> but keep for Angular bindings
                     aTab.style.display = 'none';
@@ -2467,7 +2467,7 @@
             // Register interceptor for analyze chart data
             onApiResponse(
                 function(url) {
-                    return url.includes('/api/explore/v2.1/catalog/datasets/') && url.includes('/analyze');
+                    return url.includes('/api/records/1.0/analyze/');
                 },
                 function(data) {
                     if (Array.isArray(data) && data.length > 0) {
@@ -4276,7 +4276,7 @@
          * the accessible name, and on <abbr> where it provides the expansion.
          */
         removeTitleAttributes: function() {
-            const keepTitleSelectors = 'iframe, svg, abbr';
+            const keepTitleSelectors = 'iframe, svg, abbr, ods-pane';
 
             function stripTitles(root) {
                 const elements = root.querySelectorAll('[title]');
