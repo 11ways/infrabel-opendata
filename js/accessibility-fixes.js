@@ -3299,7 +3299,7 @@
             // Register interceptor for custom page chart data
             onApiResponse(
                 function(url) {
-                    return url.includes('/api/explore/v2.1/catalog/datasets/') && url.includes('/analyze');
+                    return url.includes('/api/records/1.0/analyze/');
                 },
                 function(data) {
                     if (Array.isArray(data) && data.length > 0) {
